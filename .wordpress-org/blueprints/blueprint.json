@@ -1,0 +1,36 @@
+{
+    "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+    "landingPage": "\/wp-admin\/admin.php?page=visualizer-setup-wizard&env=preview&tab#step-1",
+    "preferredVersions": {
+        "php": "8.0",
+        "wp": "latest"
+    },
+    "features": {
+        "networking": true
+    },
+    "steps": [
+        {
+            "step": "installPlugin",
+            "pluginZipFile": {
+                "resource": "wordpress.org/plugins",
+                "slug": "visualizer"
+            },
+            "options": {
+                "activate": true
+            }
+        },
+        {
+            "step": "wp-cli",
+            "command": "wp option update visualizer_fresh_install 1"
+        },
+        {
+            "step": "wp-cli",
+            "command": "wp option delete visualizer-activated"
+        },
+        {
+            "step": "login",
+            "username": "admin",
+            "password": "password"
+        }
+    ]
+}
